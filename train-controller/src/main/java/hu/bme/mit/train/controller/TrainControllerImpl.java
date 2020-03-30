@@ -1,5 +1,7 @@
 package hu.bme.mit.train.controller;
 
+import java.util.TimerTask;
+
 import hu.bme.mit.train.interfaces.TrainController;
 
 public class TrainControllerImpl implements TrainController {
@@ -7,6 +9,15 @@ public class TrainControllerImpl implements TrainController {
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+	
+	public TrainControllerImpl() {
+		TimerTask periodicSpeedControlTask = new TimerTask() {
+			@Override
+			public void run() {
+				followSpeed();
+			}
+		};
+	}
 
 	@Override
 	public void followSpeed() {
