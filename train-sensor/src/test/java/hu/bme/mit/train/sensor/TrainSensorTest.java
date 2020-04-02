@@ -22,26 +22,26 @@ public class TrainSensorTest {
 
     @Test
     public void AboveAbsoluteMargin() {
-        trainSensorImpl.overrideSpeedLimit(501);
-        verify(mockTrainUser, times(1)).setAlarmState(true);
+        trainSensor.overrideSpeedLimit(501);
+        verify(mockTU, times(1)).setAlarmState(true);
     }
 
     @Test
     public void UnderAbsoluteMargin() {
-        trainSensorImpl.overrideSpeedLimit(-1);
-        verify(mockTrainUser, times(1)).setAlarmState(true);
+        trainSensor.overrideSpeedLimit(-1);
+        verify(mockTU, times(1)).setAlarmState(true);
     }
 
     @Test
     public void AbsoluteMargin() {
-        trainSensorImpl.overrideSpeedLimit(4);
-        verify(mockTrainUser, times(1)).setAlarmState(true);
+        trainSensor.overrideSpeedLimit(4);
+        verify(mockTU, times(1)).setAlarmState(true);
     }
 
     @Test
     public void RelativeMarginBetween() {
-        trainSensorImpl.overrideSpeedLimit(300);
-        verify(mockTrainUser, times(1)).setAlarmState(false);
+        trainSensor.overrideSpeedLimit(300);
+        verify(mockTU, times(0)).setAlarmState(false);
     }
     
 }
